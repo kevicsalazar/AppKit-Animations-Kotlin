@@ -25,12 +25,12 @@ enum class Anim(val propertyName: String) {
 
 // ObjectAnimator
 
-fun View.anim(anim: Anim, vararg values: Int, init: (ObjectAnimator.() -> Unit)?) = ObjectAnimator.ofInt(this, anim.propertyName, *values).apply {
-    if (init != null) init()
+fun View.anim(anim: Anim, vararg values: Int, init: (ObjectAnimator.() -> Unit)? = null) = ObjectAnimator.ofInt(this, anim.propertyName, *values).apply {
+    init?.let { init() }
 }!!
 
-fun View.anim(anim: Anim, vararg values: Float, init: (ObjectAnimator.() -> Unit)?) = ObjectAnimator.ofFloat(this, anim.propertyName, *values).apply {
-    if (init != null) init()
+fun View.anim(anim: Anim, vararg values: Float, init: (ObjectAnimator.() -> Unit)? = null) = ObjectAnimator.ofFloat(this, anim.propertyName, *values).apply {
+    init?.let { init() }
 }!!
 
 // AnimatorSet
